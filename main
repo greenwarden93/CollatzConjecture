@@ -1,0 +1,20 @@
+# this code runs a collatz conjecture on whatever number is given by a user and lets the user know how many moves it takes to get to 1.
+
+intial_number = input('Please pick a number greater than 1!')
+number = int(intial_number)
+moves = 0
+
+def collatz_conjecture(number, moves):
+    while number != 1 and number % 2 == 0:
+        number = number / 2
+        moves += 1
+        return collatz_conjecture(number, moves)
+    while number != 1 and number % 2 != 0:
+        number = number * 3 + 1
+        moves += 1
+        return collatz_conjecture(number, moves)
+
+    if number == 1:
+        print("It took " + str(moves) + " moves to get from " + str(intial_number)+ ' to 1.')
+
+collatz_conjecture(number, moves)
